@@ -25,8 +25,8 @@ makeCacheMatrix <- function(x = matrix()) {
 
 
 
-## This function takes a matrix as its argument and provides the Inverse of
-## the matrix from Cache, if it al ready exists. if not, it calculates the 
+## This function takes a "makeCachematrix object" as its argument and provides the Inverse of
+## the matrix from Cache, if it already exists. If not, it calculates the 
 ## inverse and then stores it into the cache.
 
 cacheSolve <- function(x, ...) {

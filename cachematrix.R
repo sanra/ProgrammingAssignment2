@@ -1,15 +1,43 @@
-## Put comments here that give an overall description of what your
-## functions do
+##These two functions together serve the purpose of calculating and storing 
+## the Inverse of a square matrix into cache.
 
-## Write a short comment describing this function
+
+
+
+## This function takes a square matrix as the argument
+## and creates a list containing four functions to
+## set a matrix, get a matrix, set the value of its inverse 
+## and get the value of its inverse 
 
 makeCacheMatrix <- function(x = matrix()) {
+	
+	Inv<-matrix(nrow=nrow(x), ncol=ncol(x)) ## this intializes a square matrix with NA values
 
+	set<-function(y){
+	x<<-y
+	Inv<<-matrix(nrow=nrow(x), ncol=ncol(x))
+	}
+	get <- function() x
+	setInv<-function(Inverse) Inv<<-Inverse
+	getInv<-function() Inv
+	list(set=set, get=get, setInv=setInv, getInv=getInv)
 }
 
 
-## Write a short comment describing this function
+
+## This function takes a matrix as its argument and provides the Inverse of
+## the matrix from Cache, if it al ready exists. if not, it calculates the 
+## inverse and then stores it into the cache.
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+
+		Inv<-x$getInv()
+		if(!is.na(Inv)) {     
+		  message("getting cached data")         
+			return(Inv)
+  		 }
+	  data <- x$get()
+        Inv <- solve(data, ...)
+        x$setInv(Inv)
+        Inv
 }

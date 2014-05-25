@@ -32,7 +32,7 @@ makeCacheMatrix <- function(x = matrix()) {
 cacheSolve <- function(x, ...) {
 
 		Inv<-x$getInv()
-		if(!is.na(Inv)) {     
+		if(!is.na(Inv)) { ## this condition checks if the first element of the Inv matrix is an NA
 		  message("getting cached data")         
 			return(Inv)
   		 }
